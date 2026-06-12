@@ -8,10 +8,11 @@ The aim of this tutorial is to reproduce Fig. 2, which is displayed below for co
 <img width="795" height="477" alt="Fig  2" src="https://github.com/user-attachments/assets/c910f2eb-1796-43eb-957f-1f594da62acd" />
 <br>
 Fig. 2 shows the process contribution as percentages (on the y-axis) to the selected impact categories (on the x-axis). Each colour refers to a process, as indicated in the legend.
+<br> 
 <br>
 Let's try to reproduce the same plot.
 
-## The dataset first
+## The dataset 
 
 
 
