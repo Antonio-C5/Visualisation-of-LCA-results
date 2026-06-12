@@ -19,6 +19,16 @@ Table 5 in the paper contains the results of the life cycle impact assessment, w
 <img width="1266" height="227" alt="Table 5" src="https://github.com/user-attachments/assets/8c23dea1-9595-4ef2-9909-dd73e2017bcf" />
 <br>
 We have all the data we need. Great!
+<br>
+The same data was imported into Excel and organised in such a way as to enable the creation of Fig. 2 using the package ggplot2. 
+<br>
+The excel file includes two sheets: 
+1) the source of the data;
+2) the table used in the tutorial, which is Tabelle1 in this case.
+<br>
+Tabelle1 is then imported into RStudio.
+<br>
+To import the table, run the following code chunk:
 
 
 
