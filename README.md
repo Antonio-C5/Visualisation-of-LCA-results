@@ -1,7 +1,7 @@
 # Visualisation of LCA results
 
 ## What the Project does
-This repository includes projects on the visualisation of Life Cycle Assessment (LCA) results in RStudio (Posit team, 2023) using the package ggplot2 (Wickham, 2016). Other packages are used throughout the tutorials to manipulate data and add additional elements to a plot.
+This repository includes projects on the visualisation of Life Cycle Assessment (LCA) results in RStudio (Posit team, 2023) using the package ggplot2 (Wickham, 2016). Other packages are used throughout the tutorials to manipulate data and add additional elements in terms of visualisation.
 
 ## Why the Project is Useful
 Professional software for LCA typically display results by means of tables and figures: for instance, openLCA offers a variety of chart types (e.g., bar charts, spider charts) at the Project level. 
