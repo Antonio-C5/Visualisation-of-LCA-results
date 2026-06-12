@@ -1,7 +1,7 @@
 # Visualisation of LCA results
 
 ## What the Project does
-This repository includes projects on the visualisation of Life Cicle Assessment (LCA) results.
+This repository includes projects on the visualisation of Life Cycle Assessment (LCA) results.
 
 ## Why the Project is Useful
 Professional software for LCA typically display results by means of tables and figures: for instance, openLCA offers a variety of chart types (e.g., bar charts, spider charts) at the Project level. 
