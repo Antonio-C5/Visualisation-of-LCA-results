@@ -28,7 +28,88 @@ The excel file includes two sheets:
 
 Tabelle1 is then imported into RStudio.
 <br>
-To import the table, run the following code chunk:
+This is how Tabelle1 looks like:
+<br>
+<br>
+<img width="1452" height="742" alt="Dataset_Tabelle1" src="https://github.com/user-attachments/assets/b8141a71-4aa9-421c-8a20-d81fd316e4dc" />
+
+Tabelle1 is assigned to the object named Stacked_barchart_data.
+<br>
+Now, let's start "transforming" the dataset into the first version of our chart, which resembles the one in the paper using the package ggplot2.
+<br>
+<br>
+Stacked_barchart_data |> <br>
+  ggplot(aes(x = Impact_category, y = Relative_to_total)) + <br>
+  geom_col(aes(fill = Process), col = "white", width = 0.6) + <br>
+  theme_bw() + <br>
+  labs(x = "", <br>
+       y = "") + <br>
+  theme(axis.title = element_text(size = 20), <br>
+        axis.text = element_text(size = 18), <br>
+        legend.title = element_text(size = 18), <br>
+        legend.text = element_text(size = 15), <br>
+        legend.key.size = unit(1, "cm"))
+<br>
+<br>
+The following code will produce the following chart (1).
+<br>
+<br>
+<img width="1891" height="957" alt="image" src="https://github.com/user-attachments/assets/760219ea-6e65-46ff-9fb2-367109d4f41d" />
+<br>
+Well, the order of the processes shown in the legend is different compared to the original image; the colors are different; the labels on the x-axis do not fit in the available space.
+<br>
+<br>
+How to fix that? As you may notice, ggplot2 inserts the items in the legend by alphabetical order.
+<br>
+Well, it is not necessary to add such a detail. But we are going to do that for the sake of the example. Let's start be changing the order of the Processes and substituting the label Processing with Pelleting, as indicated in the original image.
+<br>
+<br>
+Stacked_barchart_data$Process <- factor(Stacked_barchart_data$Process, <br>
+                                        levels = c("Transport", <br>
+                                       "Pelleting", # instead of Processing <br>
+                                       "Crop removal", <br>
+                                       "Harvest",
+                                       "Maintenance", <br>
+                                       "Planting", <br>
+                                       "Land preparation")) <br>
+<br>
+<br>
+We need also to organize the impact category in the same order:
+<br>
+<br>
+Stacked_barchart_data$Impact_category <- factor(Stacked_barchart_data$Impact_category, <br> 
+                                                levels = c("Acidification potential", <br>
+                                                           "Eutrophication potential", <br>
+                                                           "Global warming potential", <br>
+                                                           "Cumulative Energy Demand")) <br>
+<br>
+<br>
+Let's check what the output of such a change is. Scale_fill_manual is used to change the colour of the stacked bars.
+<br>
+<br>
+Stacked_barchart_data |>  <br>
+  ggplot(aes(x = Impact_category, y = Relative_to_total)) + <br>
+  geom_col(aes(fill = Process), col = "white", width = 0.3) + <br>
+  theme_light() + <br>
+  labs(x = "", <br>
+       y = "", <br>
+       fill = "") + <br>
+  theme(axis.title = element_text(size = 20), <br>
+        axis.text.x = element_text(size = 10, angle = 45, vjust = 0.5), <br>
+        axis.text.y = element_text(size = 10), <br>
+        legend.title = element_text(size = 15), <br>
+        legend.text = element_text(size = 13), <br>
+        legend.key.size = unit(0.5, "cm")) + <br>
+  scale_y_continuous(limits = c(0, 100), <br>
+                     breaks = seq(0, 100, 10)) + <br>
+  scale_fill_manual(values = c("#93B1EB", "#F87531", "#089CC5", "#694189", "#6A8701","#8D1920", "#12396B" ))  <br>
+<br>
+<br>
+<img width="1887" height="956" alt="image" src="https://github.com/user-attachments/assets/0deeca31-1c0c-4316-a975-8d53ba92d356" />
+<br>
+<br>
+
+
 
 
 
