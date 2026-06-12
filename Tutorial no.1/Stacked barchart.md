@@ -38,17 +38,19 @@ Tabelle1 is assigned to the object named Stacked_barchart_data.
 Now, let's start "transforming" the dataset into the first version of our chart, which resembles the one in the paper using the package ggplot2.
 <br>
 <br>
-Stacked_barchart_data |> <br>
-  ggplot(aes(x = Impact_category, y = Relative_to_total)) + <br>
-  geom_col(aes(fill = Process), col = "white", width = 0.6) + <br>
-  theme_bw() + <br>
-  labs(x = "", <br>
-       y = "") + <br>
-  theme(axis.title = element_text(size = 20), <br>
-        axis.text = element_text(size = 18), <br>
-        legend.title = element_text(size = 18), <br>
-        legend.text = element_text(size = 15), <br>
+```r
+Stacked_barchart_data |>
+  ggplot(aes(x = Impact_category, y = Relative_to_total)) + 
+  geom_col(aes(fill = Process), col = "white", width = 0.6) + 
+  theme_bw() + 
+  labs(x = "", 
+       y = "") + 
+  theme(axis.title = element_text(size = 20), 
+        axis.text = element_text(size = 18), 
+        legend.title = element_text(size = 18), 
+        legend.text = element_text(size = 15), 
         legend.key.size = unit(1, "cm"))
+```
 <br>
 <br>
 The following code will produce the following chart (1).
@@ -64,45 +66,51 @@ How to fix that? As you may notice, ggplot2 inserts the items in the legend by a
 Well, it is not necessary to add such a detail. But we are going to do that for the sake of the example. Let's start be changing the order of the Processes and substituting the label Processing with Pelleting, as indicated in the original image.
 <br>
 <br>
-Stacked_barchart_data$Process <- factor(Stacked_barchart_data$Process, <br>
-                                        levels = c("Transport", <br>
-                                       "Pelleting", # instead of Processing <br>
-                                       "Crop removal", <br>
+```r
+Stacked_barchart_data$Process <- factor(Stacked_barchart_data$Process, 
+                                        levels = c("Transport", 
+                                       "Pelleting", # instead of Processing 
+                                       "Crop removal", 
                                        "Harvest",
-                                       "Maintenance", <br>
-                                       "Planting", <br>
-                                       "Land preparation")) <br>
+                                       "Maintenance", 
+                                       "Planting", 
+                                       "Land preparation"))
+```
 <br>
 <br>
 We need also to organize the impact category in the same order:
 <br>
 <br>
-Stacked_barchart_data$Impact_category <- factor(Stacked_barchart_data$Impact_category, <br> 
-                                                levels = c("Acidification potential", <br>
-                                                           "Eutrophication potential", <br>
-                                                           "Global warming potential", <br>
-                                                           "Cumulative Energy Demand")) <br>
+```r
+Stacked_barchart_data$Impact_category <- factor(Stacked_barchart_data$Impact_category, 
+                                                levels = c("Acidification potential", 
+                                                           "Eutrophication potential", 
+                                                           "Global warming potential", 
+                                                           "Cumulative Energy Demand")) 
+```
 <br>
 <br>
 Let's check what the output of such a change is. Scale_fill_manual is used to change the colour of the stacked bars.
 <br>
 <br>
-Stacked_barchart_data |>  <br>
-  ggplot(aes(x = Impact_category, y = Relative_to_total)) + <br>
-  geom_col(aes(fill = Process), col = "white", width = 0.3) + <br>
-  theme_light() + <br>
-  labs(x = "", <br>
-       y = "", <br>
-       fill = "") + <br>
-  theme(axis.title = element_text(size = 20), <br>
-        axis.text.x = element_text(size = 10, angle = 45, vjust = 0.5), <br>
-        axis.text.y = element_text(size = 10), <br>
-        legend.title = element_text(size = 15), <br>
-        legend.text = element_text(size = 13), <br>
-        legend.key.size = unit(0.5, "cm")) + <br>
-  scale_y_continuous(limits = c(0, 100), <br>
-                     breaks = seq(0, 100, 10)) + <br>
-  scale_fill_manual(values = c("#93B1EB", "#F87531", "#089CC5", "#694189", "#6A8701","#8D1920", "#12396B" ))  <br>
+```r
+Stacked_barchart_data |> 
+  ggplot(aes(x = Impact_category, y = Relative_to_total)) + 
+  geom_col(aes(fill = Process), col = "white", width = 0.3) +
+  theme_light() + 
+  labs(x = "", 
+       y = "", 
+       fill = "") + 
+  theme(axis.title = element_text(size = 20), 
+        axis.text.x = element_text(size = 10, angle = 45, vjust = 0.5), 
+        axis.text.y = element_text(size = 10), 
+        legend.title = element_text(size = 15), 
+        legend.text = element_text(size = 13), 
+        legend.key.size = unit(0.5, "cm")) + 
+  scale_y_continuous(limits = c(0, 100), 
+                     breaks = seq(0, 100, 10)) + 
+  scale_fill_manual(values = c("#93B1EB", "#F87531", "#089CC5", "#694189", "#6A8701","#8D1920", "#12396B" ))  
+```
 <br>
 <br>
 <img width="1887" height="956" alt="image" src="https://github.com/user-attachments/assets/0deeca31-1c0c-4316-a975-8d53ba92d356" />
